@@ -17,11 +17,25 @@
   <div id="vis"></div>
   
   <script type="text/javascript">
-    var spec = "https://berniejenny.github.io/FIT3179_simple_vega-lite/basic-bar-chart.vg.json";
-    vegaEmbed('#vis', spec).then(function(result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-  </script>
+    let df = [
+      {"city": "Seattle",  "month": "Apr", "precip": 2.68},
+      {"city": "Seattle",  "month": "Aug", "precip": 0.87},
+      {"city": "Seattle",  "month": "Dec", "precip": 5.31},
+      {"city": "New York", "month": "Apr", "precip": 3.94},
+      {"city": "New York", "month": "Aug", "precip": 4.13},
+      {"city": "New York", "month": "Dec", "precip": 3.58},
+      {"city": "Chicago",  "month": "Apr", "precip": 3.62},
+      {"city": "Chicago",  "month": "Aug", "precip": 3.98},
+      {"city": "Chicago",  "month": "Dec", "precip": 2.56},
+    ];
+    const spec = {
+      vl.markPoint()
+      .data(df)
+      .render()
+    };  /* JSON output for your chart's specification */
+    const opt = {renderer: "canvas", actions: false};  /* Options for the embedding */
+    vegaEmbed("#vis", spec, opt);
+   </script>
   
   
   
