@@ -1,10 +1,12 @@
 import {vl} from '@vega/vega-lite-api'
+/*
 import {printTable} from '@uwdata/data-utilities'
 
 data = require('vega-datasets@1') // import vega_datasets
 cars = data['cars.json']() // load and parse cars data
 
 printTable(cars.slice(0, 5)) // display the first five rows
+*/
 
 df = [
   {"city": "Seattle",  "month": "Apr", "precip": 2.68},
