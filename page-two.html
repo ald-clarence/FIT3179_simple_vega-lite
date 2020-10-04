@@ -124,21 +124,23 @@
       
     </script>
     
-     <h2> Example 3 - Failed </h2>
+     <h2> Example 3 </h2>
     
     <div id="view3"></div>
     
     
     <script>
-      import {printTable} from '@uwdata/data-utilities';
+      
+      var popilation_file = require('population.json');
+      /*import {printTable} from '@uwdata/data-utilities';
       
       data = require('vega-datasets@1');
       
-      cars = data['cars.json']();
+      cars = data['cars.json']();*/
       
       // now you can use the API!
       vl.markLine()
-      .data(cars)
+      .data(population_file)
       .encode(
         vl.x().fieldT('Year'),
         vl.y().average('Miles_per_Gallon')
