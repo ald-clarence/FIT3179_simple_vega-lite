@@ -105,6 +105,11 @@
       vl.markPoint()
       .data(df)
       .render()
+      .then(viewElement => {
+          // render returns a promise to a DOM element containing the chart
+          // viewElement.value contains the Vega View object instance
+          document.getElementById('view').appendChild(viewElement);
+        });
 
       
 
