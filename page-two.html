@@ -60,11 +60,11 @@
     <div id="view2"></div>
     
     <script>
-      import {printTable} from '@uwdata/data-utilities'
+      //import {printTable} from '@uwdata/data-utilities'
       
-      data = require('vega-datasets@1') 
+      //data = require('vega-datasets@1') 
       
-      cars = data['cars.json']() 
+      //cars = data['cars.json']() 
       
       
       df = [
@@ -104,11 +104,15 @@
       // now you can use the API!
       vl.markPoint()
       .data(df)
+      .encode(
+        vl.x().fieldQ('precip'),
+        vl.y().fieldN('city')
+      )
       .render()
       .then(viewElement => {
           // render returns a promise to a DOM element containing the chart
           // viewElement.value contains the Vega View object instance
-          document.getElementById('view').appendChild(viewElement);
+          document.getElementById('view2').appendChild(viewElement);
         });
 
       
