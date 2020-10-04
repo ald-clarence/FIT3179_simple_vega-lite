@@ -1,44 +1,57 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Hello World</title>
-  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-  <!-- Import vega-embed -->
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-</head>
-<body>
-  <h1>Hello World</h1>
-  
-  <h2> Vis 1 </h2>
-  
-  <div id="vis"></div>
-  
-  <script type="text/javascript">
-    let df = [
-      {"city": "Seattle",  "month": "Apr", "precip": 2.68},
-      {"city": "Seattle",  "month": "Aug", "precip": 0.87},
-      {"city": "Seattle",  "month": "Dec", "precip": 5.31},
-      {"city": "New York", "month": "Apr", "precip": 3.94},
-      {"city": "New York", "month": "Aug", "precip": 4.13},
-      {"city": "New York", "month": "Dec", "precip": 3.58},
-      {"city": "Chicago",  "month": "Apr", "precip": 3.62},
-      {"city": "Chicago",  "month": "Aug", "precip": 3.98},
-      {"city": "Chicago",  "month": "Dec", "precip": 2.56},
-    ];
-    const spec = {
-      vl.markPoint()
-      .data(df)
-      .render()
-    };  /* JSON output for your chart's specification */
-    const opt = {renderer: "canvas", actions: false};  /* Options for the embedding */
-    vegaEmbed("#vis", spec, opt);
-   </script>
-  
-  
-  
-  
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+  </head>
+  <body>
+    <div id="view"></div>
+
+    <script>
+      // setup API options
+      const options = {
+        config: {
+          // Vega-Lite default configuration
+        },
+        init: (view) => {
+          // initialize tooltip handler
+          view.tooltip(new vegaTooltip.Handler().call);
+        },
+        view: {
+          // view constructor options
+          // remove the loader if you don't want to default to vega-datasets!
+          loader: vega.loader({
+            baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+          }),
+          renderer: "canvas",
+        },
+      };
+
+      // register vega and vega-lite with the API
+      vl.register(vega, vegaLite, options);
+
+      // now you can use the API!
+      vl.markBar({ tooltip: true })
+        .data([
+          { a: "A", b: 28 }, { a: "B", b: 55 }, { a: "C", b: 43 },
+          { a: "D", b: 91 }, { a: "E", b: 81 }, { a: "F", b: 53 },
+          { a: "G", b: 19 }, { a: "H", b: 87 }, { a: "I", b: 52 },
+        ])
+        .encode(
+          vl.x().fieldQ("b"),
+          vl.y().fieldN("a"),
+          vl.tooltip([vl.fieldQ("b"), vl.fieldN("a")])
+        )
+        .render()
+        .then(viewElement => {
+          // render returns a promise to a DOM element containing the chart
+          // viewElement.value contains the Vega View object instance
+          document.getElementById('view').appendChild(viewElement);
+        });
+    </script>
+  </body>
 </html>
