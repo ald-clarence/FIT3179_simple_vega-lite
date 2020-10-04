@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
   </head>
   <body>
+    <h2> Example 1 </h2>
     <div id="view"></div>
 
     <script>
@@ -53,5 +54,65 @@
           document.getElementById('view').appendChild(viewElement);
         });
     </script>
+    
+    <h2> Example 2 </h2>
+    
+    <div id="view2"></div>
+    
+    <script>
+      import {printTable} from '@uwdata/data-utilities'
+      
+      data = require('vega-datasets@1') 
+      
+      cars = data['cars.json']() 
+      
+      
+      df = [
+        {"city": "Seattle",  "month": "Apr", "precip": 2.68},
+        {"city": "Seattle",  "month": "Aug", "precip": 0.87},
+        {"city": "Seattle",  "month": "Dec", "precip": 5.31},
+        {"city": "New York", "month": "Apr", "precip": 3.94},
+        {"city": "New York", "month": "Aug", "precip": 4.13},
+        {"city": "New York", "month": "Dec", "precip": 3.58},
+        {"city": "Chicago",  "month": "Apr", "precip": 3.62},
+        {"city": "Chicago",  "month": "Aug", "precip": 3.98},
+        {"city": "Chicago",  "month": "Dec", "precip": 2.56},
+      ];
+      
+      // setup API options
+      const options = {
+        config: {
+          // Vega-Lite default configuration
+        },
+        init: (view) => {
+          // initialize tooltip handler
+          view.tooltip(new vegaTooltip.Handler().call);
+        },
+        view: {
+          // view constructor options
+          // remove the loader if you don't want to default to vega-datasets!
+          loader: vega.loader({
+            baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+          }),
+          renderer: "canvas",
+        },
+      };
+
+      // register vega and vega-lite with the API
+      vl.register(vega, vegaLite, options);
+      
+      // now you can use the API!
+      vl.markPoint()
+      .data(df)
+      .render()
+
+      
+
+      
+      
+      
+    </script>
+    
+    
   </body>
 </html>
