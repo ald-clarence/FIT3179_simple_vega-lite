@@ -60,6 +60,8 @@
   </script>
   
   
+  <h2> Example 2 </h2>
+  
   <div id="example-2"></div>
 
     <script type="text/javascript">
@@ -87,6 +89,19 @@
       };
       vegaEmbed('#example-2', yourVlSpec);
     </script>
+  
+  <h2> Example 3 </h2>
+ 
+  <div id="tut-ex-3"></div>
+  
+  <script type="text/javascript">
+    var spec = "https://ald-clarence.github.io/FIT3179_simple_vega-lite/penguins-chart.json.js";
+    vegaEmbed('#tut-ex-1', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+  
+  
   
   
 </body>
