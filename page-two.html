@@ -139,11 +139,11 @@
       cars = data['cars.json']();*/
       
       // now you can use the API!
-      vl.markLine()
+      vl.markBar()
       .data(population_file)
       .encode(
         vl.x().fieldT('Year'),
-        vl.y().average('Miles_per_Gallon')
+        vl.y().sum('people')
       )
       .render()
       .then(viewElement => {
