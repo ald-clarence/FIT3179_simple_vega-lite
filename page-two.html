@@ -55,7 +55,7 @@
         });
     </script>
     
-    <h2> Example 2 - Failed </h2>
+    <h2> Example 2 </h2>
     
     <div id="view2"></div>
     
@@ -121,6 +121,34 @@
 
       
       
+      
+    </script>
+    
+     <h2> Example 3 - Failed </h2>
+    
+    <div id="view3"></div>
+    
+    
+    <script>
+      import {printTable} from '@uwdata/data-utilities';
+      
+      data = require('vega-datasets@1');
+      
+      cars = data['cars.json']();
+      
+      // now you can use the API!
+      vl.markLine()
+      .data(cars)
+      .encode(
+        vl.x().fieldT('Year'),
+        vl.y().average('Miles_per_Gallon')
+      )
+      .render()
+      .then(viewElement => {
+          // render returns a promise to a DOM element containing the chart
+          // viewElement.value contains the Vega View object instance
+          document.getElementById('view2').appendChild(viewElement);
+        });
       
     </script>
     
