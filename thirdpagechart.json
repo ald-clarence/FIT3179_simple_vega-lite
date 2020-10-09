@@ -1,0 +1,16 @@
+{
+  "mark": {
+    "type": "circle"
+  },
+  "encoding": {
+    "x": {
+      "field": "precip",
+      "type": "quantitative",
+      "aggregate": "average"
+    },
+    "y": {
+      "field": "city",
+      "type": "nominal"
+    }
+  }
+}
