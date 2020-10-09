@@ -1,36 +1,16 @@
 {
-  "layer": [
-    {
-      "mark": {
-        "type": "circle"
-      },
-      "encoding": {
-        "x": {
-          "field": "precip",
-          "type": "quantitative",
-          "aggregate": "average"
-        },
-        "y": {
-          "field": "city",
-          "type": "nominal"
-        }
-      }
+  "mark": {
+    "type": "circle"
+  },
+  "encoding": {
+    "x": {
+      "field": "precip",
+      "type": "quantitative",
+      "aggregate": "average"
     },
-    {
-      "mark": {
-        "type": "line"
-      },
-      "encoding": {
-        "x": {
-          "field": "precip",
-          "type": "quantitative",
-          "aggregate": "average"
-        },
-        "y": {
-          "field": "city",
-          "type": "nominal"
-        }
-      }
+    "y": {
+      "field": "city",
+      "type": "nominal"
     }
-  ]
+  }
 }
