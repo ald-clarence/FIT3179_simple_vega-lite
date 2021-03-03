@@ -32,7 +32,7 @@
               .projection(projection); 
                 
             
-            d3.json("us-states.txt", function(mapData){
+            d3.json("https://ald-clarence.github.io/FIT3179_simple_vega-lite/us-states.txt", function(mapData){
                
                 var states = svg.selectAll("path")
                   // bind the geographic data to svg elements
@@ -47,7 +47,7 @@
                   .style("stroke-width", "1")
                   .style("fill", "white");
                 
-                d3.csv("MobileHomes.csv", function(data) {
+                d3.csv("https://ald-clarence.github.io/FIT3179_simple_vega-lite/MobileHomes.csv", function(data) {
                     
                     var country2value = {};
                     var minValue = Infinity;
